@@ -3,35 +3,29 @@ import { AppModule } from './app.module';
 import { GlobalExceptionFilter } from './common/filters/http-exception.filter';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { LoggingInterceptor } from './logging/logging.interceptor';
+import * as express from 'express';
 import { join } from 'path';
-import { FastifyAdapter, NestFastifyApplication} from '@nestjs/platform-fastify';
-import fastifyStatic from '@fastify/static';
 
 async function bootstrap() {
-  // AGORA USANDO O TIPO CORRETO
-  const app = await NestFactory.create<NestFastifyApplication>(
-    AppModule,
-    new FastifyAdapter(),
-  );
+  const app = await NestFactory.create(AppModule);
 
-  // --- Versionamento da API (ID18) ---
+  // Versionamento
   app.enableVersioning({
     type: VersioningType.URI,
   });
 
-  // --- Swagger (ID14) ---
+  // Swagger
   const config = new DocumentBuilder()
-    .setTitle('AskMe API')
-    .setDescription('Documentação da API de dúvidas escolares')
-    .setVersion('1.0')
-    .addTag('duvidas')
-    .build();
+  .setTitle('AskMe API')
+  .setDescription('Documentação da API de dúvidas escolares')
+  .setVersion('1.0')
+  .addTag('duvidas')
+  .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  // --- Pipes Globais ---
+  // Pipes globais
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -39,18 +33,13 @@ async function bootstrap() {
     }),
   );
 
-  // --- Filtros Globais ---
+  // Filtro global
   app.useGlobalFilters(new GlobalExceptionFilter());
 
-  // --- Interceptor de Log ---
-  app.useGlobalInterceptors(new LoggingInterceptor());
-
-  // --- STATIC FILES (FASTIFY) ---
-  await app.register(fastifyStatic, {
-    root: join(__dirname, '..', 'public'),
-    prefix: '/', 
-  });
+  // Arquivos estáticos (views/)
+  app.use(express.static(join(process.cwd(), 'views')));
 
   await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }
+
 bootstrap();
