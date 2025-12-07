@@ -16,7 +16,10 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'views'), 
     }),
-    CacheModule.register({ ttl: 60 }), // cache 60s
+    CacheModule.register({ 
+      isGlobal: true,
+      ttl: 60 
+    }),
     PrismaModule,
     AuthModule,
     DuvidasModule,

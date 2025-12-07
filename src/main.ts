@@ -5,6 +5,7 @@ import { VersioningType } from '@nestjs/common';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 import { Reflector } from '@nestjs/core';
+import { writeFileSync } from 'fs';
 
 
 async function bootstrap() {
@@ -31,6 +32,8 @@ async function bootstrap() {
     type: VersioningType.URI,
     defaultVersion: '1',
   });
+
+  writeFileSync('./swagger.json', JSON.stringify(document));
 
   await app.listen(3000);
 }

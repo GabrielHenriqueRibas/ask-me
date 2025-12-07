@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Param, Patch, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch, Delete, UseInterceptors } from '@nestjs/common';
 import { DuvidasService } from './duvidas.service';
 import { CreateDuvidaDto } from './dto/create-duvida.dto';
 import { UpdateDuvidaDto } from './dto/update-duvida.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @ApiTags('Dúvidas')
 @Controller('duvidas')
@@ -14,11 +15,14 @@ export class DuvidasController {
     return this.service.create(dto);
   }
 
+  @UseInterceptors(CacheInterceptor)
   @Get()
   findAll() {
+    console.log("Buscando do banco...");
     return this.service.findAll();
   }
 
+  @UseInterceptors(CacheInterceptor)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.service.findOne(Number(id));
