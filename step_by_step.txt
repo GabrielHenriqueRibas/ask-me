@@ -1,49 +1,54 @@
 RA1 - Projetar e desenvolver uma API funcional utilizando o framework NestJS.
 
-1º Instalação nest:  $nest new .;
+    [Ok] ID1: O aluno configurou corretamente o ambiente de desenvolvimento e criou a API utilizando NestJS, com rotas e controladores que seguem a arquitetura modular.
 
-2º Criação de modulo Duvidas: 
-$ nest g module duvidas #Os módulos organizam e agrupam componentes relacionados (controllers, services, providers). Eles servem para estruturar a aplicação em partes independentes e reutilizáveis.
+    [Ok] ID2: O aluno aplicou boas práticas de organização da lógica de negócios, garantindo que os services contenham a lógica de negócio e sejam chamados pelos controladores, separando responsabilidades corretamente.
 
-3º Criação de modulo Duvidas: 
-$ nest g controller duvidas #Os controllers recebem e respondem às requisições HTTP. Eles definem as rotas da aplicação e chamam o service para executar a lógica de negócio.
+    [Ok] ID3: O aluno utilizou providers e configurou adequadamente a injeção de dependência no NestJS, garantindo uma arquitetura modular e escalável.
 
-4º Criação de modulo Duvidas: 
-$ nest g service duvidas #Os services contêm toda a lógica de negócio da aplicação. Eles são responsáveis por processar dados, aplicar regras e retornar informações para o controller.
+    [Ok] ID4: O aluno demonstrou a habilidade de criar e manipular rotas HTTP, manipulando parâmetros de rota, query e body, lidando corretamente com requisições e respostas.
 
-[Ok] ID1: O aluno configurou corretamente o ambiente de desenvolvimento e criou a API utilizando NestJS, com rotas e controladores que seguem a arquitetura modular.
+    [Ok] ID5: O aluno aplicou boas práticas de tratamento de erros, utilizando filtros globais e personalizando as mensagens de erro para garantir respostas claras e consistentes.
 
-5º Gerar a organização entre service(responsavel pela logica de negocio) e controller(definição de rotas) em duvidas.service.ts e duvidas.controller.ts 
+    [Ok] ID6: O aluno criou classes DTO (Data Transfer Objects) para garantir a validação e consistência dos dados em diferentes endpoints, utilizando pipes para validar entradas de dados.
 
-[Ok] ID2: O aluno aplicou boas práticas de organização da lógica de negócios, garantindo que os services contenham a lógica de negócio e sejam chamados pelos controladores, separando responsabilidades corretamente.
-
-6º Injeção de service em controller por meio do modulo (duvidas.service.ts(Injetable()) -> duvidas.module.ts -> duvidas.controller.ts)
-
-[Ok] ID3: O aluno utilizou providers e configurou adequadamente a injeção de dependência no NestJS, garantindo uma arquitetura modular e escalável.
-
-7º Utilização de decoradores no controller:
-@Post: Cria uma rota HTTP POST
-@Get: Cria uma rota HTTP GET
-@Body:Pega tudo que o cliente enviou no body da requisição (JSON)
-@Param: Lê os paramentros da url (ex: id)
-
-[Ok] ID4: O aluno demonstrou a habilidade de criar e manipular rotas HTTP, manipulando parâmetros de rota, query e body, lidando corretamente com requisições e respostas.
-
-8º Criação de filtros de erros em common/filters/http-exception.filter.ts:
-
-[Ok] ID5: O aluno aplicou boas práticas de tratamento de erros, utilizando filtros globais e personalizando as mensagens de erro para garantir respostas claras e consistentes.
-
-9º Criação do DTO, usar os decoradores para validar as entradas de dados e implementar os pipes em main.ts para fazer mais verificações
-
-[Ok] ID6: O aluno criou classes DTO (Data Transfer Objects) para garantir a validação e consistência dos dados em diferentes endpoints, utilizando pipes para validar entradas de dados.
-[Ok] ID7: O aluno aplicou corretamente pipes de validação no NestJS, verificando entradas inválidas e assegurando a integridade dos dados transmitidos
+    [Ok] ID7: O aluno aplicou corretamente pipes de validação no NestJS, verificando entradas inválidas e assegurando a integridade dos dados transmitidos
 
 RA2 - Implementar persistência de dados com um banco de dados relacional utilizando Prisma ou TypeORM.
 
-10º Modelar o diagrama pensando nas entidades usuario -> duvida -> resposta (raiz: .erd)
+    [Ok] ID8: O aluno modelou corretamente os dados da aplicação, definindo entidades, suas relações e campos necessários, refletidos em um Diagrama de Entidade-Relacionamento (ERD).
 
-[Ok] ID8: O aluno modelou corretamente os dados da aplicação, definindo entidades, suas relações e campos necessários, refletidos em um Diagrama de Entidade-Relacionamento (ERD).
+    [Ok] ID9: O aluno configurou e conectou a API a um banco de dados relacional (PostgreSQL, MySQL, etc.) utilizando Prisma ou TypeORM.
 
-[Ok] ID9: O aluno configurou e conectou a API a um banco de dados relacional (PostgreSQL, MySQL, etc.) utilizando Prisma ou TypeORM.
+    [Ok] ID11: O aluno implementou corretamente as operações CRUD (Create, Read, Update, Delete) para pelo menos uma entidade no projeto, utilizando NestJS.
 
-[Ok] ID11: O aluno implementou corretamente as operações CRUD (Create, Read, Update, Delete) para pelo menos uma entidade no projeto, utilizando NestJS.
+
+RA4 - Gerar a documentação da API e realizar o deploy em um ambiente de produção.
+
+    [OK] ID14: O aluno integrou corretamente o Swagger à API, gerando a documentação completa e interativa dos endpoints, parâmetros e respostas da API, com exemplos de requisições e respostas.
+    
+    [OK] ID15: O aluno realizou o deploy da API em uma plataforma de hospedagem na nuvem (ex.: Render.com, Heroku, Vercel, etc.), garantindo que a API estivesse acessível publicamente.
+    
+    [OK] ID16: O aluno garantiu que a API funcionasse corretamente no ambiente de produção, incluindo a documentação Swagger e o banco de dados.
+    
+    [OK] ID17: O aluno realizou a configuração correta de variáveis de ambiente usando o ConfigModule do NestJS.
+    
+    [OK] ID18: O aluno implementou corretamente o versionamento de APIs REST no NestJS, assegurando que diferentes versões da API pudessem coexistir.
+
+RA5 - Implementar autenticação, autorização e segurança em APIs utilizando JWT, Guards, Middleware e Interceptadores.
+
+    [OK] ID19: O aluno configurou a autenticação na API utilizando JWT (JSON Web Tokens).
+    
+    [OK] ID20: O aluno implementou controle de acesso baseado em roles e níveis de permissão, utilizando Guards para verificar permissões em rotas específicas.
+    
+    [OK] ID21: O aluno configurou e utilizou middleware para manipular requisições antes que elas chegassem aos controladores, realizando tarefas como autenticação, logging ou tratamento de CORS.
+    
+    [OK] ID22: O aluno implementou interceptadores para realizar logging ou modificar as respostas antes de enviá-las ao cliente.
+
+REC : Implementação de Cache:
+
+Descrição: O aluno deve adicionar uma camada de cache na API, usando uma ferramenta como Redis ou a cache nativa do NestJS, para otimizar as operações de leitura e melhorar o desempenho.
+
+
+Bônus: Desenvolvimento do Frontend: 10 pontos
+Bônus: Publicação e Monetização da API no RapidAPI: 10 pontos

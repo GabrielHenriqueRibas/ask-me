@@ -1,24 +1,35 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { CreateDuvidaDto } from './dto/create-duvida.dto';
 
 @Injectable()
 export class DuvidasService {
   constructor(private prisma: PrismaService) {}
 
-  listar() {
-    return this.prisma.duvida.findMany();
+  create(data) {
+    return this.prisma.duvida.create({ data });
   }
 
-  criar(data: CreateDuvidaDto) {
-    return this.prisma.duvida.create({
+  findAll() {
+    return this.prisma.duvida.findMany({
+      include: { respostas: true },
+    });
+  }
+
+  findOne(id: number) {
+    return this.prisma.duvida.findUnique({
+      where: { id },
+      include: { respostas: true },
+    });
+  }
+
+  update(id: number, data) {
+    return this.prisma.duvida.update({
+      where: { id },
       data,
     });
   }
 
-  buscarPorId(id: number) {
-    return this.prisma.duvida.findUnique({
-      where: { id },
-    });
+  remove(id: number) {
+    return this.prisma.duvida.delete({ where: { id } });
   }
 }

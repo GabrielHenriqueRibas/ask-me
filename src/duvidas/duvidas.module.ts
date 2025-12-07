@@ -1,10 +1,8 @@
 import { Module } from '@nestjs/common';
-import { DuvidasController } from './duvidas.controller';
 import { DuvidasService } from './duvidas.service';
-import { PrismaModule } from '../prisma/prisma.module';
+import { DuvidasController } from './duvidas.controller';
 
 @Module({
-  imports: [PrismaModule],
   controllers: [DuvidasController],
   providers: [DuvidasService],
 })

@@ -1,51 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <title>Cadastrar Dúvida</title>
+  <meta charset="UTF-8">
+  <title>Criar Dúvida</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<body class="bg-gray-100">
 
-<body class="bg-gray-100 p-6">
+  <div class="container mx-auto py-10">
+    <h1 class="text-3xl font-bold mb-6">Criar Nova Dúvida</h1>
 
-  <div class="max-w-lg mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold mb-4">Cadastrar Dúvida</h1>
+    <form id="form" class="bg-white p-6 rounded shadow max-w-lg">
+      <label class="block mb-3">
+        <span class="font-semibold">Título</span>
+        <input name="titulo" class="w-full p-2 border rounded" required />
+      </label>
 
-    <form onsubmit="enviar(event)">
-      <label class="block mb-2">Nome</label>
-      <input id="nome" class="w-full border p-2 rounded mb-4" required>
+      <label class="block mb-3">
+        <span class="font-semibold">Descrição</span>
+        <textarea name="descricao" class="w-full p-2 border rounded" rows="4" required></textarea>
+      </label>
 
-      <label class="block mb-2">Título</label>
-      <input id="titulo" class="w-full border p-2 rounded mb-4" required>
-
-      <label class="block mb-2">Descrição</label>
-      <textarea id="descricao" class="w-full border p-2 rounded mb-4" required></textarea>
-
-      <button
-        class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-      >
-        Enviar
-      </button>
+      <button class="bg-blue-600 text-white px-4 py-2 rounded">Salvar</button>
     </form>
+
+    <a href="/duvidas.html" class="text-blue-600 underline mt-6 block">Voltar</a>
   </div>
 
   <script>
-    async function enviar(e) {
+    document.getElementById("form").addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const nome = document.getElementById("nome").value;
-      const titulo = document.getElementById("titulo").value;
-      const descricao = document.getElementById("descricao").value;
+      const form = new FormData(e.target);
 
-      await fetch("/duvidas", {
+      const res = await fetch("/v1/duvidas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nome, titulo, descricao })
+        body: JSON.stringify({
+          titulo: form.get("titulo"),
+          descricao: form.get("descricao")
+        })
       });
 
-      alert("Dúvida enviada com sucesso!");
-      window.location.href = "/";
-    }
+      if (res.ok) {
+        window.location.href = "/duvidas.html";
+      } else {
+        alert("Erro ao criar!");
+      }
+    });
   </script>
 
 </body>
