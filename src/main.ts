@@ -4,15 +4,20 @@ import { GlobalExceptionFilter } from './common/filters/http-exception.filter';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { LoggingInterceptor } from './logging/logging.interceptor';
-import path, { join } from 'path';
-import { ExpressAdapter } from '@nestjs/platform-express';
+import { join } from 'path';
+import { FastifyAdapter, NestFastifyApplication} from '@nestjs/platform-fastify';
+import fastifyStatic from '@fastify/static';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, new ExpressAdapter());
+  // AGORA USANDO O TIPO CORRETO
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter(),
+  );
 
   // --- Versionamento da API (ID18) ---
   app.enableVersioning({
-    type: VersioningType.URI, // URLs tipo: /v1/rotas
+    type: VersioningType.URI,
   });
 
   // --- Swagger (ID14) ---
@@ -37,10 +42,15 @@ async function bootstrap() {
   // --- Filtros Globais ---
   app.useGlobalFilters(new GlobalExceptionFilter());
 
+  // --- Interceptor de Log ---
   app.useGlobalInterceptors(new LoggingInterceptor());
 
-  app.useStaticAssets(join(__dirname, '..', 'public'));
+  // --- STATIC FILES (FASTIFY) ---
+  await app.register(fastifyStatic, {
+    root: join(__dirname, '..', 'public'),
+    prefix: '/', 
+  });
 
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }
 bootstrap();

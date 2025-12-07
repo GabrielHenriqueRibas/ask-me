@@ -22,7 +22,7 @@
 
   <script>
     async function carregar() {
-      const res = await fetch("http://localhost:3000/duvidas");
+      const res = await fetch("/duvidas");
       const duvidas = await res.json();
 
       const lista = document.getElementById("lista");

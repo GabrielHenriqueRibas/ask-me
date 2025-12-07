@@ -5,8 +5,8 @@ import { DuvidasModule } from './duvidas/duvidas.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
-import { LogsMiddleware } from './logs/logs.middleware';
 import { FrontendModule } from './frontend/frontend.module';
+import { LogsMiddleware } from './common/filters/middleware/logs.middleware';
 
 @Module({
   imports: [

@@ -20,7 +20,7 @@
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
 
-      const res = await fetch("http://localhost:3000/duvidas/" + id);
+      const res = await fetch("/duvidas/" + id);
       const d = await res.json();
 
       document.getElementById("titulo").innerText = d.titulo;
