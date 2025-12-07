@@ -3,9 +3,12 @@ import { AppModule } from './app.module';
 import { GlobalExceptionFilter } from './common/filters/http-exception.filter';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { LoggingInterceptor } from './logging/logging.interceptor';
+import path, { join } from 'path';
+import { ExpressAdapter } from '@nestjs/platform-express';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, new ExpressAdapter());
 
   // --- Versionamento da API (ID18) ---
   app.enableVersioning({
@@ -33,6 +36,10 @@ async function bootstrap() {
 
   // --- Filtros Globais ---
   app.useGlobalFilters(new GlobalExceptionFilter());
+
+  app.useGlobalInterceptors(new LoggingInterceptor());
+
+  app.useStaticAssets(join(__dirname, '..', 'public'));
 
   await app.listen(process.env.PORT ?? 3000);
 }
