@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
+//providers
 @Injectable()
 export class RespostasService {
   constructor(private prisma: PrismaService) {}

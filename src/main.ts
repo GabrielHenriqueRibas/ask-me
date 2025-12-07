@@ -1,11 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { VersioningType } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 import { Reflector } from '@nestjs/core';
 import { writeFileSync } from 'fs';
+import { GlobalExceptionFilter } from './common/filters/http-exception.filter';
 
 
 async function bootstrap() {
@@ -33,7 +34,15 @@ async function bootstrap() {
     defaultVersion: '1',
   });
 
-  writeFileSync('./swagger.json', JSON.stringify(document));
+  app.useGlobalPipes(
+  new ValidationPipe({
+    whitelist: true, //remove campos que não existem no DTO
+    forbidNonWhitelisted: true, //gera erro se campos extras forem enviados
+    transform: true, //converte tipos automaticamente
+  }),
+);
+
+  app.useGlobalFilters(new GlobalExceptionFilter());
 
   await app.listen(3000);
 }

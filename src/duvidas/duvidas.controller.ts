@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Patch, Delete, UseInterceptors } fr
 import { DuvidasService } from './duvidas.service';
 import { CreateDuvidaDto } from './dto/create-duvida.dto';
 import { UpdateDuvidaDto } from './dto/update-duvida.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @ApiTags('Dúvidas')
@@ -11,6 +11,8 @@ export class DuvidasController {
   constructor(private service: DuvidasService) {}
 
   @Post()
+  @ApiOperation({ summary: 'Cria uma nova dúvida' })
+  @ApiResponse({ status: 201, description: 'Dúvida criada com sucesso' })
   create(@Body() dto: CreateDuvidaDto) {
     return this.service.create(dto);
   }

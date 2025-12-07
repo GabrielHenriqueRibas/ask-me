@@ -8,11 +8,11 @@ RA1 - Projetar e desenvolver uma API funcional utilizando o framework NestJS.
 
     [Ok] ID4: O aluno demonstrou a habilidade de criar e manipular rotas HTTP, manipulando parâmetros de rota, query e body, lidando corretamente com requisições e respostas.
 
-    [Ok] ID5: O aluno aplicou boas práticas de tratamento de erros, utilizando filtros globais e personalizando as mensagens de erro para garantir respostas claras e consistentes.
+    [X] ID5: O aluno aplicou boas práticas de tratamento de erros, utilizando filtros globais e personalizando as mensagens de erro para garantir respostas claras e consistentes.
 
     [Ok] ID6: O aluno criou classes DTO (Data Transfer Objects) para garantir a validação e consistência dos dados em diferentes endpoints, utilizando pipes para validar entradas de dados.
 
-    [Ok] ID7: O aluno aplicou corretamente pipes de validação no NestJS, verificando entradas inválidas e assegurando a integridade dos dados transmitidos
+    [X] ID7: O aluno aplicou corretamente pipes de validação no NestJS, verificando entradas inválidas e assegurando a integridade dos dados transmitidos
 
 RA2 - Implementar persistência de dados com um banco de dados relacional utilizando Prisma ou TypeORM.
 
@@ -29,7 +29,7 @@ RA4 - Gerar a documentação da API e realizar o deploy em um ambiente de produ�
     
     [OK] ID15: O aluno realizou o deploy da API em uma plataforma de hospedagem na nuvem (ex.: Render.com, Heroku, Vercel, etc.), garantindo que a API estivesse acessível publicamente.
     
-    [OK] ID16: O aluno garantiu que a API funcionasse corretamente no ambiente de produção, incluindo a documentação Swagger e o banco de dados.
+    [] ID16: O aluno garantiu que a API funcionasse corretamente no ambiente de produção, incluindo a documentação Swagger e o banco de dados.
     
     [OK] ID17: O aluno realizou a configuração correta de variáveis de ambiente usando o ConfigModule do NestJS.
     
@@ -37,13 +37,13 @@ RA4 - Gerar a documentação da API e realizar o deploy em um ambiente de produ�
 
 RA5 - Implementar autenticação, autorização e segurança em APIs utilizando JWT, Guards, Middleware e Interceptadores.
 
-    [OK] ID19: O aluno configurou a autenticação na API utilizando JWT (JSON Web Tokens).
+    [Ok] ID19: O aluno configurou a autenticação na API utilizando JWT (JSON Web Tokens).
     
-    [OK] ID20: O aluno implementou controle de acesso baseado em roles e níveis de permissão, utilizando Guards para verificar permissões em rotas específicas.
+    [] ID20: O aluno implementou controle de acesso baseado em roles e níveis de permissão, utilizando Guards para verificar permissões em rotas específicas.
     
-    [OK] ID21: O aluno configurou e utilizou middleware para manipular requisições antes que elas chegassem aos controladores, realizando tarefas como autenticação, logging ou tratamento de CORS.
+    [Ok] ID21: O aluno configurou e utilizou middleware para manipular requisições antes que elas chegassem aos controladores, realizando tarefas como autenticação, logging ou tratamento de CORS.
     
-    [OK] ID22: O aluno implementou interceptadores para realizar logging ou modificar as respostas antes de enviá-las ao cliente.
+    [] ID22: O aluno implementou interceptadores para realizar logging ou modificar as respostas antes de enviá-las ao cliente.
 
 REC : Implementação de Cache:
 
