@@ -1,6 +1,8 @@
-import { Controller, Post, Get, Param, Body, ParseIntPipe } from '@nestjs/common';
+import { Controller, Post, Get, Param, Body, ParseIntPipe, UseInterceptors } from '@nestjs/common';
 import { DuvidasService } from './duvidas.service';
 import { CreateDuvidaDto } from './dto/create-duvida.dto';
+import { CacheInterceptor } from '@nestjs/cache-manager';
+
 
 @Controller('duvidas')
 export class DuvidasController {
@@ -12,6 +14,7 @@ export class DuvidasController {
   }
 
   @Get()
+  @UseInterceptors(CacheInterceptor)
   listar() {
     return this.service.listar();
   }
