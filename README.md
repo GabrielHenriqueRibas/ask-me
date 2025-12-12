@@ -25,7 +25,7 @@ O sistema utiliza arquitetura modular, validações com DTOs, versionamento, Pri
 
 
   ```bash
-    git clone https://github.com/gabrielribasdev/ask-me.git
+    git clone https://github.com/GabrielHenriqueRibas/ask-me
     cd ask-me
     npm install
   ```
