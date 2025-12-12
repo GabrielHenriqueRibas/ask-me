@@ -1,4 +1,13 @@
-import { Controller, Get, Post, Body, Param, Patch, Delete, UseInterceptors } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Patch,
+  Delete,
+  UseInterceptors,
+} from '@nestjs/common';
 import { DuvidasService } from './duvidas.service';
 import { CreateDuvidaDto } from './dto/create-duvida.dto';
 import { UpdateDuvidaDto } from './dto/update-duvida.dto';
@@ -20,7 +29,6 @@ export class DuvidasController {
   @UseInterceptors(CacheInterceptor)
   @Get()
   findAll() {
-    console.log("Buscando do banco...");
     return this.service.findAll();
   }
 

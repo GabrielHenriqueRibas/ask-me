@@ -1,98 +1,129 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🧠 Ask Me – API para Gerenciamento de Dúvidas e Respostas
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+### **Autor:** Gabriel Henrique Ribas  
+### **URL da API em Produção:** https://ask-me-u8tk.onrender.com  
+### **Documentação Swagger:** https://ask-me-u8tk.onrender.com/v1/docs
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 📘 Descrição do Projeto
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+**Ask Me** é uma API REST desenvolvida com **NestJS**, criada para gerenciar dúvidas enviadas pelos usuários e suas respectivas respostas.  
+O sistema utiliza arquitetura modular, validações com DTOs, versionamento, Prisma ORM, banco de dados relacional, cache e documentação via Swagger.
 
-## Project setup
+---
 
-```bash
-$ yarn install
-```
+## Como Executar o Projeto Localmente
 
-## Compile and run the project
+#### Pré-requisitos
 
-```bash
-# development
-$ yarn run start
+- Node.js v18+
+- NPM v9+
+- PostgreSQL v14+
 
-# watch mode
-$ yarn run start:dev
+#### Instalação das Dependências
 
-# production mode
-$ yarn run start:prod
-```
 
-## Run tests
+  ```bash
+    git clone https://github.com/gabrielribasdev/ask-me.git
+    cd ask-me
+    npm install
+  ```
 
-```bash
-# unit tests
-$ yarn run test
 
-# e2e tests
-$ yarn run test:e2e
+#### Variáveis de Ambiente
 
-# test coverage
-$ yarn run test:cov
-```
+Crie um arquivo .env na raiz do projeto contendo:
 
-## Deployment
+  ```env
+    DATABASE_URL="postgresql://usuario:senha@localhost:5432/duvidasdb"
+    JWT_SECRET="sua_chave_jwt_aqui"
+  ```
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+#### Configuração do Banco de Dados
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+Aplicar as migrations:
 
-```bash
-$ yarn install -g @nestjs/mau
-$ mau deploy
-```
+  ```bash
+    npx prisma migrate dev
+  ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+#### Executando o Projeto
 
-## Resources
+Modo desenvolvimento:
+  ```bash
+    npm run start:dev
+  ```
+Modo produção:
+  ```bash
+    npm run build
+    npm run start:prod
+  ```
 
-Check out a few resources that may come in handy when working with NestJS:
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+##### Acessos locais:
 
-## Support
+**API:** http://localhost:3000
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+**Swagger:** http://localhost:3000/v1/docs
 
-## Stay in touch
+![alt text](erd.png)
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+#### Checklist de Requisitos
 
-## License
+##### RA1 - Projetar e desenvolver uma API funcional utilizando o framework NestJS.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+  [Ok] ID1: O aluno configurou corretamente o ambiente de desenvolvimento e criou a API utilizando NestJS, com rotas e controladores que seguem a arquitetura modular.
+
+  [Ok] ID2: O aluno aplicou boas práticas de organização da lógica de negócios, garantindo que os services contenham a lógica de negócio e sejam chamados pelos controladores, separando responsabilidades corretamente.
+
+  [Ok] ID3: O aluno utilizou providers e configurou adequadamente a injeção de dependência no NestJS, garantindo uma arquitetura modular e escalável.
+
+  [Ok] ID4: O aluno demonstrou a habilidade de criar e manipular rotas HTTP, manipulando parâmetros de rota, query e body, lidando corretamente com requisições e respostas.
+
+  [Ok] ID5: O aluno aplicou boas práticas de tratamento de erros, utilizando filtros globais e personalizando as mensagens de erro para garantir respostas claras e consistentes.
+
+  [Ok] ID6: O aluno criou classes DTO (Data Transfer Objects) para garantir a validação e consistência dos dados em diferentes endpoints, utilizando pipes para validar entradas de dados.
+
+  [Ok] ID7: O aluno aplicou corretamente pipes de validação no NestJS, verificando entradas inválidas e assegurando a integridade dos dados transmitidos
+
+##### RA2 - Implementar persistência de dados com um banco de dados relacional utilizando Prisma ou TypeORM.
+
+  [X] ID8: O aluno modelou corretamente os dados da aplicação, definindo entidades, suas relações e campos necessários, refletidos em um Diagrama de Entidade-Relacionamento (ERD).
+
+  [X] ID9: O aluno configurou e conectou a API a um banco de dados relacional (PostgreSQL, MySQL, etc.) utilizando Prisma ou TypeORM.
+
+  [X] ID11: O aluno implementou corretamente as operações CRUD (Create, Read, Update, Delete) para pelo menos uma entidade no projeto, utilizando NestJS.
+
+
+RA4 - Gerar a documentação da API e realizar o deploy em um ambiente de produção.
+
+  [X] ID14: O aluno integrou corretamente o Swagger à API, gerando a documentação completa e interativa dos endpoints, parâmetros e respostas da API, com exemplos de requisições e respostas.
+    
+  [X] ID15: O aluno realizou o deploy da API em uma plataforma de hospedagem na nuvem (ex.: Render.com, Heroku, Vercel, etc.), garantindo que a API estivesse acessível publicamente.
+    
+  [X] ID16: O aluno garantiu que a API funcionasse corretamente no ambiente de produção, incluindo a documentação Swagger e o banco de dados.
+    
+  [X] ID17: O aluno realizou a configuração correta de variáveis de ambiente usando o ConfigModule do NestJS.
+    
+  [X] ID18: O aluno implementou corretamente o versionamento de APIs REST no NestJS, assegurando que diferentes versões da API pudessem coexistir.
+
+##### RA5 - Implementar autenticação, autorização e segurança em APIs utilizando JWT, Guards, Middleware e Interceptadores.
+
+  [] ID19: O aluno configurou a autenticação na API utilizando JWT (JSON Web Tokens).
+    
+  [] ID20: O aluno implementou controle de acesso baseado em roles e níveis de permissão, utilizando Guards para verificar permissões em rotas específicas.
+    
+  [X] ID21: O aluno configurou e utilizou middleware para manipular requisições antes que elas chegassem aos controladores, realizando tarefas como autenticação, logging ou tratamento de CORS.
+    
+  [] ID22: O aluno implementou interceptadores para realizar logging ou modificar as respostas antes de enviá-las ao cliente.
+
+##### REC : Implementação de Cache:
+
+  [X] O aluno deve adicionar uma camada de cache na API, usando uma ferramenta como Redis ou a cache nativa do NestJS, para otimizar as operações de leitura e melhorar o desempenho.
+
+
+##### Bônus: 
+  [X] Desenvolvimento do Frontend;
+  
+  [] Publicação e Monetização da API no RapidAPI;
