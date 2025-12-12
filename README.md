@@ -67,6 +67,7 @@ Modo produção:
 
 **Swagger:** http://localhost:3000/v1/docs
 
+##### Diagrama (ERD)
 ![alt text](erd.png)
 
 #### Checklist de Requisitos
